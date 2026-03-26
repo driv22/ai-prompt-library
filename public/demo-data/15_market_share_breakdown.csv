@@ -1,0 +1,21 @@
+Rank,Product,Parent_Company,HQ_Country,Market_Cap_Category,Market_Share_Pct,Estimated_Revenue_M,YoY_Growth_Pct,Enterprise_Customers,Pricing_Model,Entry_Price_Per_Seat,Primary_Use_Case,AI_Model_Underlying,G2_Rating,Gartner_Magic_Quadrant,Geographic_Strength,Recent_Funding_M,Key_Differentiator
+1,Microsoft 365 Copilot,Microsoft,USA,Mega Cap,28.4,8200,56.6,9079,Per Seat/Month,25,Meetings,Gemini 1.5 Pro,4.1,Leader,Global,0,Broadest third-party integrations
+2,Google Workspace + Duet AI,Alphabet,USA,Mega Cap,16.2,3100,9.0,2767,Tiered,40,Finance,Llama Fine-tuned,4.2,Visionary,North America + Europe,0,Lowest TCO for SMB segment
+3,Salesforce Einstein,Salesforce,USA,Large Cap,9.8,2800,16.8,4832,Tiered,25,Productivity,Proprietary + OpenAI,3.9,Leader,North America + Europe,0,Lowest TCO for SMB segment
+4,ServiceNow AI,ServiceNow,USA,Large Cap,7.3,2100,20.8,10445,Consumption-Based,15,ITSM,Claude 3,3.9,Visionary,North America,0,Best-in-class summarization accuracy
+5,Zoom AI Companion,Zoom Video,USA,Mid Cap,5.1,840,23.5,4262,Per Seat/Month,15,Finance,Llama Fine-tuned,4.2,Leader,North America + Europe,0,Lowest TCO for SMB segment
+6,Slack AI,Salesforce,USA,Large Cap,4.9,720,106.8,10531,Enterprise License,25,CRM/Sales,Claude 3,4.3,Challenger,North America,0,Fastest enterprise deployment time
+7,Box AI,Box Inc,USA,Mid Cap,3.2,320,123.8,914,Consumption-Based,25,Productivity,Gemini 1.5 Pro,4.7,Niche Player,North America,0,Most advanced reasoning capabilities
+8,Notion AI,Notion Labs,USA,Private,2.8,180,74.2,4815,Consumption-Based,30,Meetings,GPT-4o,4.2,Leader,North America,0,Industry-specific compliance features
+9,Asana Intelligence,Asana,USA,Mid Cap,2.4,145,98.5,11273,Tiered,75,Productivity,Gemini 1.5 Pro,4.0,Leader,North America,0,Most advanced reasoning capabilities
+10,Monday AI,Monday.com,Israel,Mid Cap,2.1,210,43.0,10772,Per Seat/Month,40,Productivity,GPT-4o,4.2,Leader,North America,0,Most advanced reasoning capabilities
+11,Atlassian Intelligence,Atlassian,Australia,Large Cap,1.9,390,88.7,1195,Consumption-Based,75,ITSM,GPT-4o,4.8,Niche Player,North America + Europe,0,Broadest third-party integrations
+12,HubSpot AI,HubSpot,USA,Mid Cap,1.8,680,102.9,1271,Consumption-Based,75,ITSM,Claude 3,4.2,Niche Player,Europe + Asia,0,Native M365 integration depth
+13,Workday AI,Workday,USA,Large Cap,1.7,960,45.8,2357,Per Seat/Month,25,Productivity,Claude 3,4.2,Challenger,Europe + Asia,0,Native M365 integration depth
+14,SAP Joule,SAP,Germany,Mega Cap,1.6,2400,40.6,9639,Per Seat/Month,40,Finance,Proprietary + OpenAI,4.3,Challenger,North America,0,Native M365 integration depth
+15,Oracle AI Services,Oracle,USA,Large Cap,1.4,1800,91.5,9375,Enterprise License,20,Search/Knowledge,Proprietary,4.7,Leader,Europe + Asia,0,Lowest TCO for SMB segment
+16,IBM watsonx,IBM,USA,Large Cap,1.3,1100,23.7,9984,Consumption-Based,20,ITSM,Proprietary,4.7,Leader,Global,0,Native M365 integration depth
+17,Cohere for Enterprise,Cohere,Canada,Private,0.9,85,116.9,6847,Enterprise License,60,Search/Knowledge,Llama Fine-tuned,4.5,Niche Player,Europe + Asia,50,Best-in-class summarization accuracy
+18,Writer Enterprise,Writer,USA,Private,0.8,65,26.6,2618,Per Seat/Month,50,ITSM,GPT-4o,4.3,Leader,North America,0,Best-in-class summarization accuracy
+19,Glean,Glean,USA,Private,0.7,120,30.4,456,Per Seat/Month,20,Productivity,Claude 3,4.3,Leader,North America + Europe,250,Best-in-class summarization accuracy
+20,Guru AI,Guru,USA,Private,0.6,45,41.4,10552,Per Seat/Month,20,ITSM,Proprietary + OpenAI,4.4,Challenger,North America,100,Native M365 integration depth

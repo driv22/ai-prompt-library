@@ -1,0 +1,101 @@
+Microsoft Teams Meeting Transcript
+Meeting: Q4 2024 Copilot ROI Review & 2025 Planning
+Date: December 12, 2024
+Duration: 52 minutes
+Participants: Sarah Chen (VP Customer Success), Marcus Rivera (Director of Finance), Priya Nair (Engineering Lead), Tom Buckley (Sales Director), James Whitfield (CTO), Dana Osei (HR Director)
+
+[00:00:14] Sarah Chen: Good morning everyone. Let's get started — we've got a lot to cover. This is our Q4 Copilot ROI review and we need to leave with clear decisions on the 2025 budget and the expansion rollout plan. Marcus, do you want to set the financial context first?
+
+[00:00:38] Marcus Rivera: Sure. So, as of Q4 close, we've spent $2.3 million on Copilot licenses this year across the 847 seats we have active. The ROI analysis my team ran shows an estimated $5.1 million in productivity value — that's a 2.2x return. The biggest gains were in Finance and Legal. Finance saved an average of 6.2 hours per analyst per week, mostly on the monthly close process. Legal cut contract review time by 41%.
+
+[00:01:22] James Whitfield: That 41% number for Legal — is that audited? Because that's the figure I want to put in front of the board.
+
+[00:01:29] Marcus Rivera: It's self-reported from the team survey but we cross-validated it with document volume and turnaround timestamps in SharePoint. I'd call it solid within a 5% margin.
+
+[00:01:44] James Whitfield: Good. Let's use it. What's the ask for 2025?
+
+[00:01:50] Sarah Chen: Before we get there — Priya, can you give us the adoption health check? Because the ROI numbers only matter if we understand who's actually using it.
+
+[00:01:59] Priya Nair: Right. So of the 847 seats, we have 71% weekly active users as of last week. That's up from 54% in September. The laggard groups are Operations — they're at 38% — and HR is at 49%. The power users are almost entirely in Finance, Legal, and the Sales team.
+
+[00:02:24] Dana Osei: On the HR side — I want to address that directly. We started late. We didn't have role-specific training materials until October, and honestly the prompts people were given during onboarding weren't relevant to HR workflows. We've been working with Sarah's team on a new onboarding track and I expect our numbers to look very different by end of Q1.
+
+[00:02:48] Sarah Chen: Dana, I want to make sure we resource that properly. Can you get me a list of the top 10 HR use cases your team needs prompts for by end of this week? I'll have my team build the training package around those.
+
+[00:03:01] Dana Osei: Yes, I'll have that to you by Friday.
+
+[00:03:05] Tom Buckley: Can I jump in on Sales? Because I think our story is actually the one that should drive the expansion conversation. In Q4, we piloted Copilot for Sales with 42 reps. Average deal cycle dropped from 67 days to 51 days. That's 24% faster. And the reps using Copilot for proposal generation are winning at a 34% rate versus 27% for those who aren't. The ROI on just the Sales pilot alone paid for the entire Q4 license cost.
+
+[00:03:44] James Whitfield: Tom, what's the ask to scale that?
+
+[00:03:47] Tom Buckley: We want to go from 42 to 180 reps in Q1. That's the full commercial sales team. We need Salesforce connector access — that's been the blocker. Priya's team has been working on it.
+
+[00:04:01] Priya Nair: The Salesforce connector is in final testing. We hit a permissions issue with the service principal in our production tenant. I expect it resolved by December 20th. Once that's done, the Sales expansion can start onboarding immediately.
+
+[00:04:19] James Whitfield: December 20th is the hard deadline. If it slips, what's the contingency?
+
+[00:04:24] Priya Nair: We have a manual data export workflow that Sales can use as a bridge — it's not ideal but it keeps reps moving. But I don't anticipate needing it.
+
+[00:04:35] Marcus Rivera: On the budget question — the 2025 plan has three scenarios. Option A is hold at 847 seats, optimize adoption, spend roughly the same $2.3M. Option B is expand to 1,400 seats, adding Sales, Operations, and a second tranche of HR — that's $3.8M. Option C is full company rollout to 2,200 seats plus Copilot Studio for three custom agents we've identified — that's $5.9M.
+
+[00:05:09] James Whitfield: My instinct is Option B with a Q3 checkpoint to decide if we accelerate to C. We're not ready operationally for a 2,200 seat rollout. Training infrastructure isn't there.
+
+[00:05:22] Sarah Chen: I agree with that framing. But I want to flag that Option B needs a dedicated change management resource. Right now that's falling on my team and we're stretched.
+
+[00:05:33] James Whitfield: Noted. Dana, can HR support a change management hire in H1?
+
+[00:05:38] Dana Osei: We have a rec open for a Digital Adoption Specialist. I can prioritize that for January. But I need headcount approval by December 20th to make the timeline work.
+
+[00:05:49] James Whitfield: You have it. Consider that approved. Marcus, please update the headcount plan accordingly.
+
+[00:05:56] Marcus Rivera: Got it.
+
+[00:06:02] Tom Buckley: One more thing — and this is a risk I want to flag. We have three enterprise accounts that are renewing in Q1 who have asked specifically about our Copilot usage as part of their vendor evaluation. They want to see that we're using it internally before they commit to their own deployment. If we go Option A and stay flat on seats, I think we risk at least one of those renewals.
+
+[00:06:28] Sarah Chen: Which three accounts?
+
+[00:06:31] Tom Buckley: Meridian Financial, Cornerstone Dynamics, and Summit Healthcare. Combined ARR is $4.2 million.
+
+[00:06:39] James Whitfield: That seals it. We're going Option B. Marcus, can you get me a board memo with the updated numbers by end of next week?
+
+[00:06:47] Marcus Rivera: December 20th — I'll have it done.
+
+[00:06:52] Priya Nair: One item I want to make sure we capture — we need a decision on the Copilot Studio agents. We have three scoped: a contract drafting agent for Legal, a financial close agent for Finance, and a sales RFP response agent. The RFP agent alone could save 40 hours per rep per quarter. But building all three in parallel is aggressive. I'd recommend we sequence them — RFP agent first in Q1, close agent in Q2, legal agent in Q3.
+
+[00:07:28] James Whitfield: Is that sequencing based on ROI priority or implementation complexity?
+
+[00:07:33] Priya Nair: Both — the RFP agent has the clearest ROI case and the simplest data inputs. Legal is the most complex because of the compliance review layer we need to build.
+
+[00:07:43] James Whitfield: Approved. Priya, put together a one-pager on the RFP agent scope by end of next week so we can socialize it with Tom's team.
+
+[00:07:52] Priya Nair: Will do.
+
+[00:07:55] Sarah Chen: Before we close — we need to talk about the governance gap. Right now there's no formal prompt library governance. Different teams are creating prompts ad hoc, there's no quality review, no version control. We risk inconsistent outputs and potentially some compliance exposure, especially in Legal and Finance.
+
+[00:08:16] Marcus Rivera: That's a real risk. We had two instances this quarter where Finance analysts were using prompts that referenced outdated policy documents.
+
+[00:08:25] James Whitfield: Who owns that?
+
+[00:08:28] Sarah Chen: That needs to be a shared model — my team provides the governance framework, Priya's team builds the technical layer, and each department designates a Prompt Champion who owns curation for their function.
+
+[00:08:41] James Whitfield: Let's formalize that. Sarah, draft the governance charter. Priya, scope the technical requirements. I want a proposal on my desk by January 10th.
+
+[00:08:52] Sarah Chen: Understood.
+
+[00:08:55] Dana Osei: The Prompt Champion idea is good — but we need to make sure those people have protected time. If it's added to their existing workload without any adjustment it won't happen.
+
+[00:09:05] James Whitfield: Fair. Dana, work with department heads to identify candidates and build in 20% time allocation for the role. We can revisit after 90 days.
+
+[00:09:16] Tom Buckley: Last thing from me — can we agree on a shared definition of ROI for 2025 reporting? Right now Finance, Sales, and CS are all measuring it differently and I can't get a clean number to bring to customers.
+
+[00:09:29] Marcus Rivera: Agreed. I'll draft a standardized ROI framework and circulate for comment before the end of the year.
+
+[00:09:36] James Whitfield: Good. Let's wrap. To summarize the decisions: Option B expansion approved at $3.8M. Digital Adoption Specialist hire approved for January. Salesforce connector deadline is December 20th. Copilot Studio agents sequenced Q1-Q3 with RFP agent first. Governance charter due January 10th. Board memo from Marcus by December 20th. Any objections or additions?
+
+[00:10:02] Sarah Chen: Dana's use case list to me by Friday.
+
+[00:10:05] Dana Osei: Friday, confirmed.
+
+[00:10:08] James Whitfield: Good. We're done. Thank you all.
+
+[End of transcript — 52:14]

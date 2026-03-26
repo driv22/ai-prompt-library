@@ -1,0 +1,121 @@
+Month,Year,Product_Line,Region,Revenue,COGS,Gross_Profit,Gross_Margin_Pct,Units_Sold,ASP,Discount_Amount,Discount_Pct,Channel,Sales_Rep_ID,Customer_Segment
+January,2024,Enterprise SaaS,Northeast,1842500,552750,1289750,70.0,147,12534,184250,10.0,Direct,SR-011,Enterprise
+January,2024,Enterprise SaaS,Southeast,1124000,337200,786800,70.0,89,12629,112400,10.0,Direct,SR-022,Enterprise
+January,2024,Enterprise SaaS,Midwest,987500,296250,691250,70.0,79,12500,98750,10.0,Partner,SR-033,Mid-Market
+January,2024,Enterprise SaaS,West,2341000,702300,1638700,70.0,186,12586,234100,10.0,Direct,SR-044,Enterprise
+January,2024,Professional Services,Northeast,445000,267000,178000,40.0,89,5000,22250,5.0,Direct,SR-012,Enterprise
+January,2024,Professional Services,West,612000,367200,244800,40.0,102,6000,30600,5.0,Direct,SR-045,Enterprise
+January,2024,Support & Maintenance,Northeast,198000,59400,138600,70.0,396,500,0,0.0,Direct,SR-011,Enterprise
+January,2024,Support & Maintenance,West,287000,86100,200900,70.0,574,500,0,0.0,Direct,SR-044,Enterprise
+January,2024,Training,Northeast,87500,43750,43750,50.0,35,2500,0,0.0,Online,SR-013,Mid-Market
+January,2024,Training,West,124000,62000,62000,50.0,62,2000,6200,5.0,Online,SR-046,Enterprise
+February,2024,Enterprise SaaS,Northeast,1923000,576900,1346100,70.0,153,12569,192300,10.0,Direct,SR-011,Enterprise
+February,2024,Enterprise SaaS,Southeast,1187500,356250,831250,70.0,95,12500,118750,10.0,Direct,SR-022,Enterprise
+February,2024,Enterprise SaaS,Midwest,1045000,313500,731500,70.0,84,12440,104500,10.0,Partner,SR-033,Mid-Market
+February,2024,Enterprise SaaS,West,2489000,746700,1742300,70.0,198,12571,248900,10.0,Direct,SR-044,Enterprise
+February,2024,Professional Services,Northeast,478000,286800,191200,40.0,96,4979,23900,5.0,Direct,SR-012,Enterprise
+February,2024,Professional Services,West,657000,394200,262800,40.0,109,6028,32850,5.0,Direct,SR-045,Enterprise
+February,2024,Support & Maintenance,Northeast,203000,60900,142100,70.0,406,500,0,0.0,Direct,SR-011,Enterprise
+February,2024,Support & Maintenance,West,295000,88500,206500,70.0,590,500,0,0.0,Direct,SR-044,Enterprise
+February,2024,Training,Northeast,92000,46000,46000,50.0,46,2000,0,0.0,Online,SR-013,Mid-Market
+February,2024,Training,West,131000,65500,65500,50.0,65,2015,6550,5.0,Online,SR-046,Enterprise
+March,2024,Enterprise SaaS,Northeast,2145000,643500,1501500,70.0,171,12544,214500,10.0,Direct,SR-011,Enterprise
+March,2024,Enterprise SaaS,Southeast,1342000,402600,939400,70.0,107,12542,134200,10.0,Direct,SR-022,Enterprise
+March,2024,Enterprise SaaS,Midwest,1198000,359400,838600,70.0,96,12479,119800,10.0,Partner,SR-033,Mid-Market
+March,2024,Enterprise SaaS,West,2876000,862800,2013200,70.0,229,12559,287600,10.0,Direct,SR-044,Enterprise
+March,2024,Professional Services,Northeast,523000,313800,209200,40.0,105,4981,26150,5.0,Direct,SR-012,Enterprise
+March,2024,Professional Services,West,734000,440400,293600,40.0,122,6016,36700,5.0,Direct,SR-045,Enterprise
+March,2024,Support & Maintenance,Northeast,214000,64200,149800,70.0,428,500,0,0.0,Direct,SR-011,Enterprise
+March,2024,Support & Maintenance,West,311000,93300,217700,70.0,622,500,0,0.0,Direct,SR-044,Enterprise
+March,2024,Training,Northeast,98000,49000,49000,50.0,49,2000,0,0.0,Online,SR-013,Mid-Market
+March,2024,Training,West,143000,71500,71500,50.0,71,2014,7150,5.0,Online,SR-046,Enterprise
+April,2024,Enterprise SaaS,Northeast,2087000,626100,1460900,70.0,166,12572,208700,10.0,Direct,SR-011,Enterprise
+April,2024,Enterprise SaaS,Southeast,1289000,386700,902300,70.0,103,12515,128900,10.0,Direct,SR-022,Enterprise
+April,2024,Enterprise SaaS,Midwest,1156000,346800,809200,70.0,93,12430,115600,10.0,Partner,SR-033,Mid-Market
+April,2024,Enterprise SaaS,West,2743000,822900,1920100,70.0,218,12583,274300,10.0,Direct,SR-044,Enterprise
+April,2024,Professional Services,Northeast,498000,298800,199200,40.0,100,4980,24900,5.0,Direct,SR-012,Enterprise
+April,2024,Professional Services,West,701000,420600,280400,40.0,117,5991,35050,5.0,Direct,SR-045,Enterprise
+April,2024,Support & Maintenance,Northeast,208000,62400,145600,70.0,416,500,0,0.0,Direct,SR-011,Enterprise
+April,2024,Support & Maintenance,West,305000,91500,213500,70.0,610,500,0,0.0,Direct,SR-044,Enterprise
+April,2024,Training,Northeast,95000,47500,47500,50.0,47,2021,0,0.0,Online,SR-013,Mid-Market
+April,2024,Training,West,138000,69000,69000,50.0,69,2000,6900,5.0,Online,SR-046,Enterprise
+May,2024,Enterprise SaaS,Northeast,2234000,670200,1563800,70.0,178,12551,223400,10.0,Direct,SR-011,Enterprise
+May,2024,Enterprise SaaS,Southeast,1398000,419400,978600,70.0,112,12482,139800,10.0,Direct,SR-022,Enterprise
+May,2024,Enterprise SaaS,Midwest,1287000,386100,900900,70.0,103,12495,128700,10.0,Partner,SR-033,Mid-Market
+May,2024,Enterprise SaaS,West,2934000,880200,2053800,70.0,233,12591,293400,10.0,Direct,SR-044,Enterprise
+May,2024,Professional Services,Northeast,541000,324600,216400,40.0,108,5009,27050,5.0,Direct,SR-012,Enterprise
+May,2024,Professional Services,West,762000,457200,304800,40.0,127,6000,38100,5.0,Direct,SR-045,Enterprise
+May,2024,Support & Maintenance,Northeast,221000,66300,154700,70.0,442,500,0,0.0,Direct,SR-011,Enterprise
+May,2024,Support & Maintenance,West,319000,95700,223300,70.0,638,500,0,0.0,Direct,SR-044,Enterprise
+May,2024,Training,Northeast,103000,51500,51500,50.0,51,2020,0,0.0,Online,SR-013,Mid-Market
+May,2024,Training,West,149000,74500,74500,50.0,74,2014,7450,5.0,Online,SR-046,Enterprise
+June,2024,Enterprise SaaS,Northeast,2412000,723600,1688400,70.0,192,12563,241200,10.0,Direct,SR-011,Enterprise
+June,2024,Enterprise SaaS,Southeast,1521000,456300,1064700,70.0,121,12570,152100,10.0,Direct,SR-022,Enterprise
+June,2024,Enterprise SaaS,Midwest,1389000,416700,972300,70.0,111,12514,138900,10.0,Partner,SR-033,Mid-Market
+June,2024,Enterprise SaaS,West,3187000,956100,2230900,70.0,254,12547,318700,10.0,Direct,SR-044,Enterprise
+June,2024,Professional Services,Northeast,589000,353400,235600,40.0,118,4992,29450,5.0,Direct,SR-012,Enterprise
+June,2024,Professional Services,West,831000,498600,332400,40.0,138,6022,41550,5.0,Direct,SR-045,Enterprise
+June,2024,Support & Maintenance,Northeast,232000,69600,162400,70.0,464,500,0,0.0,Direct,SR-011,Enterprise
+June,2024,Support & Maintenance,West,334000,100200,233800,70.0,668,500,0,0.0,Direct,SR-044,Enterprise
+June,2024,Training,Northeast,109000,54500,54500,50.0,54,2019,0,0.0,Online,SR-013,Mid-Market
+June,2024,Training,West,158000,79000,79000,50.0,79,2000,7900,5.0,Online,SR-046,Enterprise
+July,2024,Enterprise SaaS,Northeast,2198000,659400,1538600,70.0,175,12560,219800,10.0,Direct,SR-011,Enterprise
+July,2024,Enterprise SaaS,Southeast,1387000,416100,970900,70.0,110,12609,138700,10.0,Direct,SR-022,Enterprise
+July,2024,Enterprise SaaS,Midwest,1234000,370200,863800,70.0,99,12465,123400,10.0,Partner,SR-033,Mid-Market
+July,2024,Enterprise SaaS,West,2891000,867300,2023700,70.0,230,12570,289100,10.0,Direct,SR-044,Enterprise
+July,2024,Professional Services,Northeast,512000,307200,204800,40.0,103,4971,25600,5.0,Direct,SR-012,Enterprise
+July,2024,Professional Services,West,789000,473400,315600,40.0,131,6023,39450,5.0,Direct,SR-045,Enterprise
+July,2024,Support & Maintenance,Northeast,226000,67800,158200,70.0,452,500,0,0.0,Direct,SR-011,Enterprise
+July,2024,Support & Maintenance,West,327000,98100,228900,70.0,654,500,0,0.0,Direct,SR-044,Enterprise
+July,2024,Training,Northeast,99000,49500,49500,50.0,49,2020,0,0.0,Online,SR-013,Mid-Market
+July,2024,Training,West,145000,72500,72500,50.0,72,2014,7250,5.0,Online,SR-046,Enterprise
+August,2024,Enterprise SaaS,Northeast,2287000,686100,1600900,70.0,182,12566,228700,10.0,Direct,SR-011,Enterprise
+August,2024,Enterprise SaaS,Southeast,1445000,433500,1011500,70.0,115,12565,144500,10.0,Direct,SR-022,Enterprise
+August,2024,Enterprise SaaS,Midwest,1312000,393600,918400,70.0,105,12495,131200,10.0,Partner,SR-033,Mid-Market
+August,2024,Enterprise SaaS,West,3021000,906300,2114700,70.0,240,12588,302100,10.0,Direct,SR-044,Enterprise
+August,2024,Professional Services,Northeast,534000,320400,213600,40.0,107,4991,26700,5.0,Direct,SR-012,Enterprise
+August,2024,Professional Services,West,812000,487200,324800,40.0,135,6015,40600,5.0,Direct,SR-045,Enterprise
+August,2024,Support & Maintenance,Northeast,231000,69300,161700,70.0,462,500,0,0.0,Direct,SR-011,Enterprise
+August,2024,Support & Maintenance,West,332000,99600,232400,70.0,664,500,0,0.0,Direct,SR-044,Enterprise
+August,2024,Training,Northeast,101000,50500,50500,50.0,50,2020,0,0.0,Online,SR-013,Mid-Market
+August,2024,Training,West,148000,74000,74000,50.0,74,2000,7400,5.0,Online,SR-046,Enterprise
+September,2024,Enterprise SaaS,Northeast,2534000,760200,1773800,70.0,201,12607,253400,10.0,Direct,SR-011,Enterprise
+September,2024,Enterprise SaaS,Southeast,1598000,479400,1118600,70.0,127,12583,159800,10.0,Direct,SR-022,Enterprise
+September,2024,Enterprise SaaS,Midwest,1456000,436800,1019200,70.0,117,12444,145600,10.0,Partner,SR-033,Mid-Market
+September,2024,Enterprise SaaS,West,3345000,1003500,2341500,70.0,266,12575,334500,10.0,Direct,SR-044,Enterprise
+September,2024,Professional Services,Northeast,578000,346800,231200,40.0,116,4983,28900,5.0,Direct,SR-012,Enterprise
+September,2024,Professional Services,West,867000,520200,346800,40.0,144,6021,43350,5.0,Direct,SR-045,Enterprise
+September,2024,Support & Maintenance,Northeast,244000,73200,170800,70.0,488,500,0,0.0,Direct,SR-011,Enterprise
+September,2024,Support & Maintenance,West,348000,104400,243600,70.0,696,500,0,0.0,Direct,SR-044,Enterprise
+September,2024,Training,Northeast,108000,54000,54000,50.0,54,2000,0,0.0,Online,SR-013,Mid-Market
+September,2024,Training,West,157000,78500,78500,50.0,78,2013,7850,5.0,Online,SR-046,Enterprise
+October,2024,Enterprise SaaS,Northeast,2678000,803400,1874600,70.0,213,12572,267800,10.0,Direct,SR-011,Enterprise
+October,2024,Enterprise SaaS,Southeast,1689000,506700,1182300,70.0,134,12604,168900,10.0,Direct,SR-022,Enterprise
+October,2024,Enterprise SaaS,Midwest,1534000,460200,1073800,70.0,123,12472,153400,10.0,Partner,SR-033,Mid-Market
+October,2024,Enterprise SaaS,West,3512000,1053600,2458400,70.0,279,12588,351200,10.0,Direct,SR-044,Enterprise
+October,2024,Professional Services,Northeast,612000,367200,244800,40.0,122,5016,30600,5.0,Direct,SR-012,Enterprise
+October,2024,Professional Services,West,912000,547200,364800,40.0,152,6000,45600,5.0,Direct,SR-045,Enterprise
+October,2024,Support & Maintenance,Northeast,256000,76800,179200,70.0,512,500,0,0.0,Direct,SR-011,Enterprise
+October,2024,Support & Maintenance,West,362000,108600,253400,70.0,724,500,0,0.0,Direct,SR-044,Enterprise
+October,2024,Training,Northeast,113000,56500,56500,50.0,56,2018,0,0.0,Online,SR-013,Mid-Market
+October,2024,Training,West,164000,82000,82000,50.0,82,2000,8200,5.0,Online,SR-046,Enterprise
+November,2024,Enterprise SaaS,Northeast,2845000,853500,1991500,70.0,226,12588,284500,10.0,Direct,SR-011,Enterprise
+November,2024,Enterprise SaaS,Southeast,1798000,539400,1258600,70.0,143,12573,179800,10.0,Direct,SR-022,Enterprise
+November,2024,Enterprise SaaS,Midwest,1623000,486900,1136100,70.0,130,12485,162300,10.0,Partner,SR-033,Mid-Market
+November,2024,Enterprise SaaS,West,3734000,1120200,2613800,70.0,297,12573,373400,10.0,Direct,SR-044,Enterprise
+November,2024,Professional Services,Northeast,645000,387000,258000,40.0,129,5000,32250,5.0,Direct,SR-012,Enterprise
+November,2024,Professional Services,West,956000,573600,382400,40.0,159,6013,47800,5.0,Direct,SR-045,Enterprise
+November,2024,Support & Maintenance,Northeast,267000,80100,186900,70.0,534,500,0,0.0,Direct,SR-011,Enterprise
+November,2024,Support & Maintenance,West,378000,113400,264600,70.0,756,500,0,0.0,Direct,SR-044,Enterprise
+November,2024,Training,Northeast,117000,58500,58500,50.0,58,2017,0,0.0,Online,SR-013,Mid-Market
+November,2024,Training,West,169000,84500,84500,50.0,84,2012,8450,5.0,Online,SR-046,Enterprise
+December,2024,Enterprise SaaS,Northeast,3123000,936900,2186100,70.0,248,12593,312300,10.0,Direct,SR-011,Enterprise
+December,2024,Enterprise SaaS,Southeast,1978000,593400,1384600,70.0,157,12599,197800,10.0,Direct,SR-022,Enterprise
+December,2024,Enterprise SaaS,Midwest,1789000,536700,1252300,70.0,143,12510,178900,10.0,Partner,SR-033,Mid-Market
+December,2024,Enterprise SaaS,West,4123000,1236900,2886100,70.0,328,12570,412300,10.0,Direct,SR-044,Enterprise
+December,2024,Professional Services,Northeast,712000,427200,284800,40.0,142,5014,35600,5.0,Direct,SR-012,Enterprise
+December,2024,Professional Services,West,1045000,627000,418000,40.0,174,6006,52250,5.0,Direct,SR-045,Enterprise
+December,2024,Support & Maintenance,Northeast,289000,86700,202300,70.0,578,500,0,0.0,Direct,SR-011,Enterprise
+December,2024,Support & Maintenance,West,412000,123600,288400,70.0,824,500,0,0.0,Direct,SR-044,Enterprise
+December,2024,Training,Northeast,128000,64000,64000,50.0,64,2000,0,0.0,Online,SR-013,Mid-Market
+December,2024,Training,West,187000,93500,93500,50.0,93,2011,9350,5.0,Online,SR-046,Enterprise

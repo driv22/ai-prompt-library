@@ -1,0 +1,95 @@
+MASTER SERVICES AGREEMENT
+
+This Master Services Agreement ("Agreement") is entered into as of November 1, 2024, between Nexus Software Solutions, Inc., a Delaware corporation with its principal place of business at 400 Technology Drive, Austin, TX 78701 ("Vendor"), and [CLIENT COMPANY NAME], a [STATE] corporation ("Client").
+
+1. SERVICES
+
+1.1 Vendor agrees to provide software-as-a-service platform access and professional services as described in one or more Statements of Work ("SOW") executed hereunder. All services shall be performed at Vendor's sole discretion as to method and means.
+
+1.2 Vendor reserves the right to substitute personnel assigned to Client engagements without prior notice provided deliverable timelines are maintained.
+
+2. PAYMENT TERMS
+
+2.1 Client shall pay all invoices within fifteen (15) days of receipt. Invoices not paid within fifteen days shall accrue interest at the rate of 1.75% per month (21% annually) on the unpaid balance.
+
+2.2 All fees are non-refundable under any circumstances, including but not limited to service outages, dissatisfaction with deliverables, or early termination by either party.
+
+2.3 Vendor may adjust pricing with thirty (30) days written notice. Client's continued use of services following notice constitutes acceptance of new pricing.
+
+2.4 Client shall reimburse Vendor for all expenses incurred in connection with services, including travel, lodging, and meals, without cap, provided receipts are submitted within 90 days.
+
+3. INTELLECTUAL PROPERTY
+
+3.1 All deliverables, work product, customizations, and derivative works created by Vendor in connection with this Agreement, including those created using Client data or specifications, shall be and remain the sole and exclusive property of Vendor.
+
+3.2 Client is granted a limited, non-exclusive, non-transferable license to use deliverables solely for internal business purposes during the term of this Agreement. Such license terminates immediately upon expiration or termination of this Agreement for any reason.
+
+3.3 Client hereby grants Vendor a perpetual, irrevocable, royalty-free license to use, reproduce, modify, and incorporate Client Data into Vendor's products and services for any purpose, including commercial purposes.
+
+4. CONFIDENTIALITY
+
+4.1 "Confidential Information" means information designated as confidential in writing at the time of disclosure. Oral disclosures must be confirmed in writing within five (5) business days to qualify as Confidential Information.
+
+4.2 Confidentiality obligations shall survive termination for a period of one (1) year.
+
+4.3 Vendor may disclose Client Confidential Information to its affiliates, subcontractors, and investors without Client consent provided those parties are subject to substantially similar confidentiality obligations.
+
+5. LIMITATION OF LIABILITY
+
+5.1 IN NO EVENT SHALL VENDOR'S TOTAL LIABILITY TO CLIENT FOR ANY CLAIMS ARISING UNDER THIS AGREEMENT EXCEED THE GREATER OF (A) $500 OR (B) THE FEES PAID IN THE ONE (1) MONTH PRECEDING THE CLAIM.
+
+5.2 VENDOR SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING LOST PROFITS, LOSS OF DATA, OR BUSINESS INTERRUPTION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+5.3 Client's sole remedy for service outages exceeding four (4) consecutive hours shall be a service credit equal to one day of pro-rated fees for the affected service tier.
+
+6. INDEMNIFICATION
+
+6.1 Client shall defend, indemnify, and hold harmless Vendor and its officers, directors, employees, and agents from any third-party claims arising from: (a) Client's use of the services; (b) Client's breach of this Agreement; (c) Client's violation of any applicable law; or (d) any claim that Client Data infringes any third-party intellectual property rights.
+
+6.2 Vendor's indemnification obligations are limited to claims of direct infringement of U.S. patents or copyrights by the unmodified platform only, and shall not apply to any customizations or configurations made at Client's direction.
+
+7. TERM AND TERMINATION
+
+7.1 This Agreement shall commence on the Effective Date and continue for three (3) years ("Initial Term"), automatically renewing for successive one-year periods unless either party provides written notice of non-renewal at least one hundred eighty (180) days prior to the end of the then-current term.
+
+7.2 Vendor may terminate this Agreement immediately upon written notice if Client fails to pay any invoice within fifteen (15) days of its due date.
+
+7.3 Client may terminate this Agreement for convenience upon one hundred twenty (120) days written notice to Vendor; provided, however, that upon such termination Client shall pay all fees that would have been due for the remainder of the then-current term as a termination fee.
+
+7.4 Upon termination for any reason, Vendor shall have no obligation to return or provide copies of Client Data and may delete Client Data within seventy-two (72) hours of termination.
+
+8. DATA AND SECURITY
+
+8.1 Vendor shall implement "reasonable" security measures for Client Data. Vendor makes no specific guarantees regarding data security standards, certifications, or compliance with specific regulations.
+
+8.2 In the event of a data breach, Vendor shall notify Client within thirty (30) days of Vendor's confirmation of the breach. Vendor's sole obligation upon breach is to provide such notification.
+
+8.3 Client is responsible for ensuring its use of the services complies with all applicable data protection regulations including GDPR, CCPA, HIPAA, and SOX. Vendor makes no representation regarding the suitability of its platform for regulated data.
+
+9. GOVERNING LAW AND DISPUTES
+
+9.1 This Agreement shall be governed by the laws of the State of Delaware without regard to conflicts of law provisions.
+
+9.2 Any dispute shall be resolved by binding arbitration in Austin, Texas administered by JAMS under its Comprehensive Arbitration Rules. Client waives any right to jury trial or class action.
+
+9.3 Client waives the right to seek injunctive or other equitable relief in any court of competent jurisdiction.
+
+10. GENERAL PROVISIONS
+
+10.1 This Agreement may be modified only by a written instrument signed by Vendor's Chief Legal Officer. No course of dealing or performance shall modify this Agreement.
+
+10.2 Vendor may assign this Agreement without Client consent in connection with a merger, acquisition, or sale of all or substantially all of its assets. Client may not assign this Agreement without Vendor's prior written consent, not to be unreasonably withheld.
+
+10.3 Vendor may update this Agreement upon thirty (30) days notice posted to its website. Continued use of services constitutes acceptance.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the date first written above.
+
+NEXUS SOFTWARE SOLUTIONS, INC.
+By: ___________________________
+Name: Robert Hanson
+Title: Chief Revenue Officer
+
+[CLIENT COMPANY NAME]
+By: ___________________________
+Name:
+Title:

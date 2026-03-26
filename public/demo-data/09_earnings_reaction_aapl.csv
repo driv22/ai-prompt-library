@@ -1,0 +1,9 @@
+Period,Earnings_Date,Revenue_Actual_M,Revenue_Estimate_M,Revenue_Surprise_Pct,Revenue_Beat_Miss,EPS_Actual,EPS_Estimate,EPS_Surprise_Pct,EPS_Beat_Miss,Gross_Margin_Pct,Next_Quarter_Guidance_Rev_M,Stock_1Day_Reaction_Pct,Services_Revenue_M,iPhone_Revenue_M,Mac_Revenue_M,iPad_Revenue_M,Wearables_Revenue_M,Management_Tone,AI_Mentions,China_Commentary,Share_Buyback_B
+Q1 FY2023,2023-02-02,117154,121103,-3.26,Miss,1.88,1.94,-3.09,Miss,42.96,94000,-3.7,22905,66368,9092,7507,9125,Confident,13,Pressure acknowledged,22.4
+Q2 FY2023,2023-05-04,94836,92956,2.02,Beat,1.52,1.43,6.29,Beat,44.25,82000,4.7,20725,41084,8629,6842,8490,Cautiously Optimistic,25,Headwinds noted,22.2
+Q3 FY2023,2023-08-03,81797,81690,0.13,Beat,1.26,1.19,5.88,Beat,44.48,88000,2.1,22445,52843,9478,8121,9531,Confident,27,Headwinds noted,23.8
+Q4 FY2023,2023-11-02,89498,89278,0.25,Beat,1.46,1.39,5.04,Beat,45.17,117000,-0.9,19717,39951,6946,6379,8695,Cautiously Optimistic,32,Pressure acknowledged,20.3
+Q1 FY2024,2024-02-01,119575,117912,1.41,Beat,2.18,2.1,3.81,Beat,45.87,90000,0.7,24041,65604,7600,7726,8678,Cautious,23,Headwinds noted,22.6
+Q2 FY2024,2024-05-02,90753,90011,0.82,Beat,1.53,1.5,2.0,Beat,46.58,84000,5.9,22946,59456,7939,7266,9328,Cautiously Optimistic,30,Stable,20.2
+Q3 FY2024,2024-08-01,85777,84345,1.7,Beat,1.4,1.34,4.48,Beat,46.26,90000,1.0,21081,54806,7983,5721,8343,Cautiously Optimistic,20,Headwinds noted,23.9
+Q4 FY2024,2024-10-31,94930,94498,0.46,Beat,1.64,1.6,2.5,Beat,46.22,125000,1.4,22366,40189,6869,5602,8637,Confident,9,Pressure acknowledged,20.6
