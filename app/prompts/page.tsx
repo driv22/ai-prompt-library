@@ -1,8 +1,9 @@
 'use client'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Search, X } from 'lucide-react'
+import { Search, X, Sparkles, Loader2 } from 'lucide-react'
 import { useFilters } from '@/hooks/useFilters'
+import { useSemanticSearch } from '@/hooks/useSemanticSearch'
 import { PromptCard } from '@/components/PromptCard'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { EmptyState } from '@/components/EmptyState'
@@ -15,11 +16,20 @@ const promptCount = prompts.length
 const PAGE_SIZE = 24
 const tools = Object.keys(toolColorMap)
 
+const statusLabel: Record<string, string> = {
+  'loading-model': 'Loading AI model…',
+  'searching': 'Finding best matches…',
+}
+
 function LibraryContent() {
   const searchParams = useSearchParams()
   const [mounted, setMounted] = useState(false)
   const [page, setPage] = useState(1)
+  const [smartMode, setSmartMode] = useState(false)
+  const [smartQuery, setSmartQuery] = useState('')
+
   const { query, setQuery, category, setCategory, tool, setTool, hasDemoData, setHasDemoData, filtered, clearAll } = useFilters(prompts)
+  const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts)
 
   useEffect(() => {
     setMounted(true)
@@ -31,6 +41,18 @@ function LibraryContent() {
   useEffect(() => { setPage(1) }, [query, category, tool, hasDemoData])
 
   const displayed = filtered.slice(0, page * PAGE_SIZE)
+  const isSmartSearching = smartStatus === 'loading-model' || smartStatus === 'searching'
+
+  const handleSmartSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (smartQuery.trim()) semanticSearch(smartQuery)
+  }
+
+  const handleToggleMode = () => {
+    setSmartMode(m => !m)
+    clearSmart()
+    setSmartQuery('')
+  }
 
   if (!mounted) return (
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem' }}>
@@ -71,38 +93,109 @@ function LibraryContent() {
 
       {/* Main */}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ position: 'relative', marginBottom: '1rem' }}>
-          <Search size={17} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
-          <input type="text" placeholder={`Search ${promptCount.toLocaleString()} prompts...`} value={query} onChange={e => setQuery(e.target.value)} aria-label="Search prompts"
-            style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '10px', border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-primary)', fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box' }}
-            onFocus={e => (e.currentTarget.style.borderColor = 'var(--border-focus)')}
-            onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')} />
+
+        {/* Search mode toggle */}
+        <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>
+          <button onClick={() => { if (smartMode) handleToggleMode() }}
+            style={{ padding: '5px 14px', borderRadius: '100px', border: `1px solid ${!smartMode ? 'var(--accent)' : 'var(--border)'}`, backgroundColor: !smartMode ? 'var(--accent-dim)' : 'transparent', color: !smartMode ? 'var(--accent)' : 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', transition: 'all 0.15s' }}>
+            <Search size={12} /> Keyword
+          </button>
+          <button onClick={() => { if (!smartMode) handleToggleMode() }}
+            style={{ padding: '5px 14px', borderRadius: '100px', border: `1px solid ${smartMode ? 'var(--accent)' : 'var(--border)'}`, backgroundColor: smartMode ? 'var(--accent-dim)' : 'transparent', color: smartMode ? 'var(--accent)' : 'var(--text-muted)', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px', transition: 'all 0.15s' }}>
+            <Sparkles size={12} /> Smart Search
+          </button>
         </div>
+
+        {/* Smart search banner */}
+        {smartMode && (
+          <div style={{ backgroundColor: 'var(--accent-dim)', border: '1px solid rgba(99,102,241,0.25)', borderRadius: '10px', padding: '0.6rem 1rem', marginBottom: '0.75rem', fontSize: '0.8rem', color: 'var(--accent)', lineHeight: 1.5 }}>
+            <strong>Smart Search</strong> — Describe your situation in plain English and AI will find the most relevant prompts. Example: <em>&quot;I need to prepare my team for a reorg announcement&quot;</em>
+          </div>
+        )}
+
+        {/* Search input */}
+        {smartMode ? (
+          <form onSubmit={handleSmartSearch} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+            <div style={{ position: 'relative', flex: 1 }}>
+              {isSmartSearching
+                ? <Loader2 size={17} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--accent)', animation: 'spin 1s linear infinite' }} />
+                : <Sparkles size={17} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--accent)', pointerEvents: 'none' }} />
+              }
+              <input type="text" placeholder="Describe your scenario…" value={smartQuery}
+                onChange={e => setSmartQuery(e.target.value)} aria-label="Smart search"
+                style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '10px', border: '1px solid rgba(99,102,241,0.4)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-primary)', fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box' }}
+                onFocus={e => (e.currentTarget.style.borderColor = 'var(--border-focus)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'rgba(99,102,241,0.4)')} />
+            </div>
+            <button type="submit" disabled={isSmartSearching || !smartQuery.trim()}
+              style={{ backgroundColor: 'var(--accent)', color: 'white', border: 'none', borderRadius: '10px', padding: '0 1.25rem', fontSize: '0.875rem', fontWeight: 600, cursor: isSmartSearching ? 'wait' : 'pointer', whiteSpace: 'nowrap', opacity: (!smartQuery.trim() || isSmartSearching) ? 0.6 : 1 }}>
+              {isSmartSearching ? (statusLabel[smartStatus] ?? 'Searching…') : 'Find Prompts'}
+            </button>
+          </form>
+        ) : (
+          <div style={{ position: 'relative', marginBottom: '1rem' }}>
+            <Search size={17} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
+            <input type="text" placeholder={`Search ${promptCount.toLocaleString()} prompts...`} value={query} onChange={e => setQuery(e.target.value)} aria-label="Search prompts"
+              style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '10px', border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-primary)', fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box' }}
+              onFocus={e => (e.currentTarget.style.borderColor = 'var(--border-focus)')}
+              onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')} />
+          </div>
+        )}
+
+        {/* Result count / filter chips */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.5rem' }}>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem' }}>
-            {query ? `${filtered.length} prompts match "${query}"` : `Showing ${displayed.length} of ${filtered.length} prompts`}
+            {smartMode && smartResults
+              ? `${smartResults.length} prompts matched your scenario`
+              : smartMode && !smartResults
+              ? 'Describe a scenario above and press Find Prompts'
+              : query
+              ? `${filtered.length} prompts match "${query}"`
+              : `Showing ${displayed.length} of ${filtered.length} prompts`}
           </p>
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {category && <button onClick={() => setCategory(null)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>{category} <X size={11} /></button>}
-            {tool && <button onClick={() => setTool(null)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>{tool} <X size={11} /></button>}
-            {hasDemoData && <button onClick={() => setHasDemoData(false)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--demo-dim)', color: 'var(--demo-badge)', border: '1px solid rgba(217,119,6,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>Demo Data <X size={11} /></button>}
-            {(category || tool || hasDemoData) && <button onClick={clearAll} style={{ padding: '3px 10px', borderRadius: '100px', backgroundColor: 'transparent', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '0.75rem', cursor: 'pointer' }}>Clear all</button>}
+            {smartMode && smartResults && (
+              <button onClick={() => { clearSmart(); setSmartQuery('') }}
+                style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>
+                Clear results <X size={11} />
+              </button>
+            )}
+            {!smartMode && category && <button onClick={() => setCategory(null)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>{category} <X size={11} /></button>}
+            {!smartMode && tool && <button onClick={() => setTool(null)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid rgba(99,102,241,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>{tool} <X size={11} /></button>}
+            {!smartMode && hasDemoData && <button onClick={() => setHasDemoData(false)} style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '100px', backgroundColor: 'var(--demo-dim)', color: 'var(--demo-badge)', border: '1px solid rgba(217,119,6,0.3)', fontSize: '0.75rem', cursor: 'pointer' }}>Demo Data <X size={11} /></button>}
+            {!smartMode && (category || tool || hasDemoData) && <button onClick={clearAll} style={{ padding: '3px 10px', borderRadius: '100px', backgroundColor: 'transparent', color: 'var(--text-muted)', border: '1px solid var(--border)', fontSize: '0.75rem', cursor: 'pointer' }}>Clear all</button>}
           </div>
         </div>
-        {filtered.length === 0 ? <EmptyState onClear={clearAll} /> : (
-          <>
+
+        {/* Results grid */}
+        {smartMode ? (
+          smartResults ? (
+            smartResults.length === 0
+              ? <EmptyState onClear={() => { clearSmart(); setSmartQuery('') }} />
+              : <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+                  {smartResults.map((p, i) => <PromptCard key={p.id} prompt={p} index={i} />)}
+                </div>
+          ) : isSmartSearching ? (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-              {displayed.map((p, i) => <PromptCard key={p.id} prompt={p} index={i} />)}
+              {Array.from({ length: 6 }).map((_, i) => <SkeletonCard key={i} />)}
             </div>
-            {displayed.length < filtered.length && (
-              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                <button onClick={() => setPage(prev => prev + 1)}
-                  style={{ backgroundColor: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)', borderRadius: '10px', padding: '0.75rem 2rem', fontSize: '0.9rem', fontWeight: 600, cursor: 'pointer' }}>
-                  Load 24 more ({filtered.length - displayed.length} remaining)
-                </button>
+          ) : null
+        ) : (
+          filtered.length === 0 ? <EmptyState onClear={clearAll} /> : (
+            <>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+                {displayed.map((p, i) => <PromptCard key={p.id} prompt={p} index={i} />)}
               </div>
-            )}
-          </>
+              {displayed.length < filtered.length && (
+                <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                  <button onClick={() => setPage(prev => prev + 1)}
+                    style={{ backgroundColor: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)', borderRadius: '10px', padding: '0.75rem 2rem', fontSize: '0.9rem', fontWeight: 600, cursor: 'pointer' }}>
+                    Load 24 more ({filtered.length - displayed.length} remaining)
+                  </button>
+                </div>
+              )}
+            </>
+          )
         )}
       </div>
     </div>
