@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import promptsData from '@/data/prompts.json'
+import { categories } from '@/lib/constants'
 import { Prompt } from '@/lib/types'
 
 const prompts = promptsData as Prompt[]
 const promptCount = prompts.length
-const categoryCount = [...new Set(prompts.map(p => p.category))].length
+const categoryCount = categories.length
 
 export default function AboutPage() {
   return (
