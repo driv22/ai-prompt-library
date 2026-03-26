@@ -18,6 +18,9 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 
 const prompts = promptsData as Prompt[]
 const featured = prompts.filter(p => p.featured).slice(0, 6)
+const promptCount = prompts.length
+const categoryCount = categories.length
+const demoCount = prompts.filter(p => p.hasDemoData).length
 
 export default function HomePage() {
   const [q, setQ] = useState('')
@@ -43,7 +46,7 @@ export default function HomePage() {
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}
             style={{ fontSize: '1.15rem', color: 'var(--text-secondary)', marginBottom: '2.5rem', lineHeight: 1.65 }}>
-            250 enterprise-grade AI prompts, ready to deploy
+            {promptCount.toLocaleString()} enterprise-grade AI prompts, ready to deploy
           </motion.p>
           <motion.form initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }}
             onSubmit={handleSearch} style={{ display: 'flex', gap: '0.75rem', maxWidth: '560px', margin: '0 auto' }}>
@@ -64,7 +67,7 @@ export default function HomePage() {
       {/* Stats */}
       <section style={{ borderBottom: '1px solid var(--border)', borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1.5rem', display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-          {[['250', 'Prompts'], ['20', 'Categories'], ['13', 'Demo Datasets']].map(([num, label]) => (
+          {[[promptCount.toLocaleString(), 'Prompts'], [String(categoryCount), 'Categories'], [String(demoCount), 'Demo Datasets']].map(([num, label]) => (
             <div key={label} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 800, color: 'var(--accent)', lineHeight: 1 }}>{num}</div>
               <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.25rem' }}>{label}</div>
@@ -76,7 +79,7 @@ export default function HomePage() {
       {/* Categories */}
       <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '4rem 1.5rem' }}>
         <h2 style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.75rem', fontWeight: 700, marginBottom: '0.5rem' }}>Browse by Category</h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>20 categories covering every professional use case</p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.95rem' }}>{categoryCount} categories covering every professional use case</p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: '1rem' }}>
           {categories.map(cat => {
             const Icon = iconMap[cat.icon] || BookOpen
@@ -108,7 +111,7 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Hand-picked with enterprise demo data included</p>
               </div>
               <Link href="/prompts" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent)', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' }}>
-                View all 250 <ArrowRight size={16} />
+                View all {promptCount.toLocaleString()} <ArrowRight size={16} />
               </Link>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
@@ -123,7 +126,7 @@ export default function HomePage() {
         <h2 style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.75rem', fontWeight: 700, textAlign: 'center', marginBottom: '3rem' }}>How It Works</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
           {[
-            { step: '01', icon: <Search size={24} />, title: 'Browse', desc: 'Search 250 curated prompts across 20 enterprise categories. Filter by tool or demo data availability.' },
+            { step: '01', icon: <Search size={24} />, title: 'Browse', desc: `Search ${promptCount.toLocaleString()} curated prompts across ${categoryCount} enterprise categories. Filter by tool or demo data availability.` },
             { step: '02', icon: <Copy size={24} />, title: 'Copy', desc: 'One-click copy. Customize the [PLACEHOLDER] fields for your specific context, team, or data.' },
             { step: '03', icon: <Database size={24} />, title: 'Upload & Run', desc: 'For prompts with demo data, upload the CSV/TXT file to Copilot Chat and run immediately.' },
           ].map(item => (

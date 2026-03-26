@@ -11,6 +11,7 @@ import { Prompt } from '@/lib/types'
 import promptsData from '@/data/prompts.json'
 
 const prompts = promptsData as Prompt[]
+const promptCount = prompts.length
 const PAGE_SIZE = 24
 const tools = Object.keys(toolColorMap)
 
@@ -72,7 +73,7 @@ function LibraryContent() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ position: 'relative', marginBottom: '1rem' }}>
           <Search size={17} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)', pointerEvents: 'none' }} />
-          <input type="text" placeholder="Search 250 prompts..." value={query} onChange={e => setQuery(e.target.value)} aria-label="Search prompts"
+          <input type="text" placeholder={`Search ${promptCount.toLocaleString()} prompts...`} value={query} onChange={e => setQuery(e.target.value)} aria-label="Search prompts"
             style={{ width: '100%', padding: '0.75rem 1rem 0.75rem 2.75rem', borderRadius: '10px', border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-primary)', fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box' }}
             onFocus={e => (e.currentTarget.style.borderColor = 'var(--border-focus)')}
             onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')} />

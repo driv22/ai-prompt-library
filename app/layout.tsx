@@ -10,8 +10,8 @@ const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains', display: 'swap' })
 
 export const metadata: Metadata = {
-  title: 'The AI Prompt Library — 250 Enterprise-Grade Prompts',
-  description: '250 curated AI prompts for Microsoft 365 Copilot, organized into 20 categories with enterprise demo datasets.',
+  title: 'The AI Prompt Library — Enterprise-Grade Prompts for Microsoft 365',
+  description: 'Curated AI prompts for Microsoft 365 Copilot, organized across 20 categories with enterprise demo datasets for finance, legal, operations, sales, and technology professionals.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
