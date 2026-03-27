@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Search, X, Sparkles, Loader2 } from 'lucide-react'
+import { Search, X, Sparkles, Loader2, SlidersHorizontal } from 'lucide-react'
 import { useFilters } from '@/hooks/useFilters'
 import { useSemanticSearch } from '@/hooks/useSemanticSearch'
 import { PromptCard } from '@/components/PromptCard'
@@ -21,12 +21,55 @@ const statusLabel: Record<string, string> = {
   'searching': 'Finding best matches…',
 }
 
+function SidebarContent({
+  category, setCategory, tool, setTool, hasDemoData, setHasDemoData,
+  onClose,
+}: {
+  category: string | null
+  setCategory: (v: string | null) => void
+  tool: string | null
+  setTool: (v: string | null) => void
+  hasDemoData: boolean
+  setHasDemoData: (v: boolean) => void
+  onClose?: () => void
+}) {
+  return (
+    <>
+      <div style={{ marginBottom: '1.5rem' }}>
+        <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Category</p>
+        {categories.map(cat => (
+          <button key={cat.slug} onClick={() => { setCategory(category === cat.name ? null : cat.name); if (onClose) onClose() }}
+            style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: category === cat.name ? 'var(--accent-dim)' : 'transparent', color: category === cat.name ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
+            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{cat.name}</span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', flexShrink: 0, marginLeft: '4px' }}>{cat.count}</span>
+          </button>
+        ))}
+      </div>
+      <div style={{ marginBottom: '1.5rem' }}>
+        <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Tool</p>
+        {tools.map(t => (
+          <button key={t} onClick={() => { setTool(tool === t ? null : t); if (onClose) onClose() }}
+            style={{ display: 'block', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: tool === t ? 'var(--accent-dim)' : 'transparent', color: tool === t ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
+            {t}
+          </button>
+        ))}
+      </div>
+      <button onClick={() => { setHasDemoData(!hasDemoData); if (onClose && !hasDemoData) onClose() }}
+        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '7px 10px', borderRadius: '8px', border: `1px solid ${hasDemoData ? 'var(--demo-badge)' : 'var(--border)'}`, backgroundColor: hasDemoData ? 'var(--demo-dim)' : 'transparent', color: hasDemoData ? 'var(--demo-badge)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', fontWeight: hasDemoData ? 600 : 400, width: '100%', transition: 'all 0.2s' }}>
+        ⚡ Has Demo Data
+      </button>
+    </>
+  )
+}
+
 function LibraryContent() {
   const searchParams = useSearchParams()
   const [mounted, setMounted] = useState(false)
   const [page, setPage] = useState(1)
   const [smartMode, setSmartMode] = useState(false)
   const [smartQuery, setSmartQuery] = useState('')
+  const [isMobile, setIsMobile] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   const { query, setQuery, category, setCategory, tool, setTool, hasDemoData, setHasDemoData, filtered, clearAll } = useFilters(prompts)
   const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts, '/ai-prompt-library/embeddings.json')
@@ -36,6 +79,13 @@ function LibraryContent() {
     const q = searchParams.get('q')
     if (q) setQuery(q)
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
   }, [])
 
   useEffect(() => { setPage(1) }, [query, category, tool, hasDemoData])
@@ -64,35 +114,75 @@ function LibraryContent() {
 
   return (
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-      {/* Sidebar */}
-      <aside style={{ width: '220px', flexShrink: 0, position: 'sticky', top: '80px', maxHeight: 'calc(100vh - 96px)', overflowY: 'auto' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Category</p>
-          {categories.map(cat => (
-            <button key={cat.slug} onClick={() => setCategory(category === cat.name ? null : cat.name)}
-              style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: category === cat.name ? 'var(--accent-dim)' : 'transparent', color: category === cat.name ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
-              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{cat.name}</span>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', flexShrink: 0, marginLeft: '4px' }}>{cat.count}</span>
+      {/* Desktop Sidebar */}
+      {!isMobile && (
+        <aside style={{ width: '220px', flexShrink: 0, position: 'sticky', top: '80px', maxHeight: 'calc(100vh - 96px)', overflowY: 'auto' }}>
+          <SidebarContent
+            category={category} setCategory={setCategory}
+            tool={tool} setTool={setTool}
+            hasDemoData={hasDemoData} setHasDemoData={setHasDemoData}
+          />
+        </aside>
+      )}
+
+      {/* Mobile drawer backdrop */}
+      {isMobile && drawerOpen && (
+        <div
+          onClick={() => setDrawerOpen(false)}
+          style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 100 }}
+        />
+      )}
+
+      {/* Mobile drawer */}
+      {isMobile && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: drawerOpen ? 0 : '-100%',
+          width: '280px',
+          height: '100vh',
+          backgroundColor: 'var(--bg-surface)',
+          borderRight: '1px solid var(--border)',
+          zIndex: 101,
+          padding: '1.25rem',
+          overflowY: 'auto',
+          transition: 'left 0.25s ease',
+          boxSizing: 'border-box',
+        }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+            <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>Filters</span>
+            <button onClick={() => setDrawerOpen(false)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', padding: '4px' }}>
+              ✕
             </button>
-          ))}
+          </div>
+          <SidebarContent
+            category={category} setCategory={setCategory}
+            tool={tool} setTool={setTool}
+            hasDemoData={hasDemoData} setHasDemoData={setHasDemoData}
+            onClose={() => setDrawerOpen(false)}
+          />
         </div>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Tool</p>
-          {tools.map(t => (
-            <button key={t} onClick={() => setTool(tool === t ? null : t)}
-              style={{ display: 'block', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: tool === t ? 'var(--accent-dim)' : 'transparent', color: tool === t ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
-              {t}
-            </button>
-          ))}
-        </div>
-        <button onClick={() => setHasDemoData(!hasDemoData)}
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '7px 10px', borderRadius: '8px', border: `1px solid ${hasDemoData ? 'var(--demo-badge)' : 'var(--border)'}`, backgroundColor: hasDemoData ? 'var(--demo-dim)' : 'transparent', color: hasDemoData ? 'var(--demo-badge)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', fontWeight: hasDemoData ? 600 : 400, width: '100%', transition: 'all 0.2s' }}>
-          ⚡ Has Demo Data
-        </button>
-      </aside>
+      )}
 
       {/* Main */}
       <div style={{ flex: 1, minWidth: 0 }}>
+
+        {/* Mobile Filters button */}
+        {isMobile && (
+          <div style={{ marginBottom: '0.75rem' }}>
+            <button
+              onClick={() => setDrawerOpen(true)}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '7px 14px', borderRadius: '8px', border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-secondary)', fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer' }}
+            >
+              <SlidersHorizontal size={14} /> Filters
+              {(category || tool || hasDemoData) && (
+                <span style={{ backgroundColor: 'var(--accent)', color: 'white', borderRadius: '100px', fontSize: '0.65rem', fontWeight: 700, padding: '1px 6px', marginLeft: '2px' }}>
+                  {[category, tool, hasDemoData].filter(Boolean).length}
+                </span>
+              )}
+            </button>
+          </div>
+        )}
 
         {/* Search mode toggle */}
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.75rem' }}>

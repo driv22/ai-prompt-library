@@ -1,13 +1,14 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Search, ArrowRight, Copy, Database, Building2, Briefcase, PenLine, Code2, BarChart3, Rocket, TrendingUp, GraduationCap, Scale, Megaphone, Wallet, Presentation, BookOpen, Trophy, Plane, Video, Target, Bot, Sparkles, Loader2, X } from 'lucide-react'
+import { Search, ArrowRight, Copy, Database, Building2, Briefcase, PenLine, Code2, BarChart3, Rocket, TrendingUp, GraduationCap, Scale, Megaphone, Wallet, Presentation, BookOpen, Trophy, Plane, Video, Target, Bot, Sparkles, Loader2, X, Clock } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { categories, categoryColorMap } from '@/lib/constants'
 import { PromptCard } from '@/components/PromptCard'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { useSemanticSearch } from '@/hooks/useSemanticSearch'
+import { useRecentlyViewed } from '@/hooks/useRecentlyViewed'
 import { Prompt, Agent } from '@/lib/types'
 import promptsData from '@/data/prompts.json'
 import agentsData from '@/data/agents.json'
@@ -36,9 +37,13 @@ export default function HomePage() {
   const [mode, setMode] = useState<'keyword' | 'smart'>('keyword')
   const [q, setQ] = useState('')
   const [smartQ, setSmartQ] = useState('')
+  const [recentMounted, setRecentMounted] = useState(false)
   const router = useRouter()
 
   const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts, '/ai-prompt-library/embeddings.json')
+  const { recent } = useRecentlyViewed()
+
+  useEffect(() => { setRecentMounted(true) }, [])
 
   const isSmartSearching = smartStatus === 'loading-model' || smartStatus === 'searching'
 
@@ -239,6 +244,35 @@ export default function HomePage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
               {featured.map((p, i) => <PromptCard key={p.id} prompt={p} index={i} />)}
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Recently Viewed — only renders on client after mount, only if items exist */}
+      {recentMounted && recent.length > 0 && !showSmartResults && (
+        <section style={{ maxWidth: '1280px', margin: '0 auto', padding: '3rem 1.5rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.25rem' }}>
+            <Clock size={18} style={{ color: 'var(--text-muted)' }} />
+            <h2 style={{ fontFamily: 'var(--font-outfit)', fontSize: '1.15rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>Recently Viewed</h2>
+          </div>
+          <div style={{ display: 'flex', gap: '0.75rem', overflowX: 'auto', paddingBottom: '0.5rem', scrollbarWidth: 'thin' }}>
+            {recent.slice(0, 5).map(item => (
+              <Link
+                key={item.id}
+                href={item.type === 'prompt' ? `/prompts/${item.id}` : `/agents/${item.id}`}
+                style={{ textDecoration: 'none', flexShrink: 0 }}
+              >
+                <div className="card-surface" style={{ borderRadius: '10px', padding: '0.6rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', whiteSpace: 'nowrap', maxWidth: '220px', transition: 'border-color 0.15s' }}>
+                  {item.type === 'prompt'
+                    ? <BookOpen size={13} style={{ color: 'var(--accent)', flexShrink: 0 }} />
+                    : <Bot size={13} style={{ color: '#818cf8', flexShrink: 0 }} />
+                  }
+                  <span style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--text-primary)', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {item.title}
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
         </section>
       )}

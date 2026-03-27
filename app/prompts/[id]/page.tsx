@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Download, ArrowLeft, Zap, Tag, FileText } from 'lucide-react'
 import { CopyButton } from '@/components/CopyButton'
+import { ShareButton } from '@/components/ShareButton'
+import { RecentlyViewedTracker } from '@/components/RecentlyViewedTracker'
 import { PromptCard } from '@/components/PromptCard'
 import { categoryColorMap, toolColorMap } from '@/lib/constants'
 import { Prompt } from '@/lib/types'
@@ -29,12 +31,14 @@ function HighlightedText({ text }: { text: string }) {
 export default function PromptDetailPage({ params }: { params: { id: string } }) {
   const prompt = prompts.find(p => p.id === params.id)
   if (!prompt) return notFound()
+
   const categoryColor = categoryColorMap[prompt.category] || '#6366f1'
   const toolColor = toolColorMap[prompt.tool] || '#94a3b8'
   const related = prompts.filter(p => p.category === prompt.category && p.id !== prompt.id).slice(0, 3)
 
   return (
     <div style={{ maxWidth: '860px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+      <RecentlyViewedTracker id={prompt.id} type="prompt" title={prompt.title} categorySlug={prompt.categorySlug} />
       <div style={{ marginBottom: '2rem' }}>
         <Link href="/prompts" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', textDecoration: 'none', fontSize: '0.875rem', marginBottom: '0.75rem' }}>
           <ArrowLeft size={14} /> Back to Library
@@ -77,7 +81,10 @@ export default function PromptDetailPage({ params }: { params: { id: string } })
       <div style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
           <h2 style={{ fontFamily: 'var(--font-outfit)', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Prompt</h2>
-          <CopyButton text={prompt.prompt} />
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+            <ShareButton />
+            <CopyButton text={prompt.prompt} />
+          </div>
         </div>
         <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem' }}>
           <pre className="prompt-body" style={{ margin: 0 }}>

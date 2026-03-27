@@ -1,6 +1,6 @@
 'use client'
-import { useState } from 'react'
-import { Search, Bot, Sparkles, Loader2, X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Search, Bot, Sparkles, Loader2, X, SlidersHorizontal } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { AgentCard } from '@/components/AgentCard'
 import { SkeletonCard } from '@/components/SkeletonCard'
@@ -25,8 +25,17 @@ export default function AgentsPage() {
   const [smartQ, setSmartQ] = useState('')
   const [category, setCategory] = useState<string | null>(null)
   const [page, setPage] = useState(1)
+  const [isMobile, setIsMobile] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
 
   const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(agents, '/ai-prompt-library/agent-embeddings.json')
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   const isSmartSearching = smartStatus === 'loading-model' || smartStatus === 'searching'
   const showSmartResults = mode === 'smart' && (smartResults !== null || isSmartSearching)
@@ -69,6 +78,24 @@ export default function AgentsPage() {
   const filteredSmartResults = smartResults
     ? (category ? smartResults.filter(a => a.category === category) : smartResults)
     : null
+
+  const SidebarContent = ({ onClose }: { onClose?: () => void }) => (
+    <>
+      <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Category</p>
+      <button onClick={() => { setCategory(null); setPage(1); if (onClose) onClose() }}
+        style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: !category ? 'var(--accent-dim)' : 'transparent', color: !category ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', marginBottom: '1px' }}>
+        <span>All Agents</span>
+        <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem' }}>{agentCount}</span>
+      </button>
+      {allCategories.map(cat => (
+        <button key={cat} onClick={() => { setCategory(category === cat ? null : cat); setPage(1); if (onClose) onClose() }}
+          style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: category === cat ? 'var(--accent-dim)' : 'transparent', color: category === cat ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
+          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{cat}</span>
+          <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', flexShrink: 0, marginLeft: '4px' }}>{categoryCounts[cat]}</span>
+        </button>
+      ))}
+    </>
+  )
 
   return (
     <div>
@@ -142,25 +169,67 @@ export default function AgentsPage() {
 
       {/* Body */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem', display: 'flex', gap: '2rem', alignItems: 'flex-start' }}>
-        {/* Sidebar */}
-        <aside style={{ width: '200px', flexShrink: 0, position: 'sticky', top: '80px', maxHeight: 'calc(100vh - 96px)', overflowY: 'auto' }}>
-          <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Category</p>
-          <button onClick={() => { setCategory(null); setPage(1) }}
-            style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: !category ? 'var(--accent-dim)' : 'transparent', color: !category ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', marginBottom: '1px' }}>
-            <span>All Agents</span>
-            <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem' }}>{agentCount}</span>
-          </button>
-          {allCategories.map(cat => (
-            <button key={cat} onClick={() => { setCategory(category === cat ? null : cat); setPage(1) }}
-              style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '5px 8px', borderRadius: '6px', border: 'none', backgroundColor: category === cat ? 'var(--accent-dim)' : 'transparent', color: category === cat ? 'var(--accent)' : 'var(--text-secondary)', cursor: 'pointer', fontSize: '0.82rem', textAlign: 'left', transition: 'all 0.15s', marginBottom: '1px' }}>
-              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1 }}>{cat}</span>
-              <span style={{ color: 'var(--text-muted)', fontSize: '0.72rem', flexShrink: 0, marginLeft: '4px' }}>{categoryCounts[cat]}</span>
-            </button>
-          ))}
-        </aside>
+
+        {/* Desktop Sidebar */}
+        {!isMobile && (
+          <aside style={{ width: '200px', flexShrink: 0, position: 'sticky', top: '80px', maxHeight: 'calc(100vh - 96px)', overflowY: 'auto' }}>
+            <SidebarContent />
+          </aside>
+        )}
+
+        {/* Mobile drawer backdrop */}
+        {isMobile && drawerOpen && (
+          <div
+            onClick={() => setDrawerOpen(false)}
+            style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 100 }}
+          />
+        )}
+
+        {/* Mobile drawer */}
+        {isMobile && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: drawerOpen ? 0 : '-100%',
+            width: '280px',
+            height: '100vh',
+            backgroundColor: 'var(--bg-surface)',
+            borderRight: '1px solid var(--border)',
+            zIndex: 101,
+            padding: '1.25rem',
+            overflowY: 'auto',
+            transition: 'left 0.25s ease',
+            boxSizing: 'border-box',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+              <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, fontSize: '0.95rem', color: 'var(--text-primary)' }}>Filters</span>
+              <button onClick={() => setDrawerOpen(false)} style={{ background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', padding: '4px' }}>
+                ✕
+              </button>
+            </div>
+            <SidebarContent onClose={() => setDrawerOpen(false)} />
+          </div>
+        )}
 
         {/* Grid */}
         <div style={{ flex: 1, minWidth: 0 }}>
+
+          {/* Mobile Filters button */}
+          {isMobile && (
+            <div style={{ marginBottom: '1rem' }}>
+              <button
+                onClick={() => setDrawerOpen(true)}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '7px 14px', borderRadius: '8px', border: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)', color: 'var(--text-secondary)', fontSize: '0.82rem', fontWeight: 600, cursor: 'pointer' }}
+              >
+                <SlidersHorizontal size={14} /> Filters
+                {category && (
+                  <span style={{ backgroundColor: 'var(--accent)', color: 'white', borderRadius: '100px', fontSize: '0.65rem', fontWeight: 700, padding: '1px 6px', marginLeft: '2px' }}>
+                    1
+                  </span>
+                )}
+              </button>
+            </div>
+          )}
 
           {/* Smart results */}
           <AnimatePresence>

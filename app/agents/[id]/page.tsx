@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Bot, Users, Globe, Shield, ChevronRight, MessageSquare, Wrench, AlertTriangle } from 'lucide-react'
 import { CopyButton } from '@/components/CopyButton'
+import { ShareButton } from '@/components/ShareButton'
+import { RecentlyViewedTracker } from '@/components/RecentlyViewedTracker'
 import { Agent } from '@/lib/types'
 import agentsData from '@/data/agents.json'
 
@@ -47,6 +49,9 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
 
   return (
     <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '2rem 1.5rem' }}>
+      {/* Track recently viewed — client-side no-op render */}
+      <RecentlyViewedTracker id={agent.id} type="agent" title={agent.title} categorySlug={agent.categorySlug} />
+
       {/* Breadcrumb */}
       <nav style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
         <Link href="/" style={{ color: 'var(--text-muted)', textDecoration: 'none' }}>Home</Link>
@@ -60,7 +65,7 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
         {/* Main */}
         <div>
           {/* Title block */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem', flexWrap: 'wrap' }}>
             <span style={{ backgroundColor: `${color}20`, color, border: `1px solid ${color}40`, borderRadius: '6px', padding: '2px 10px', fontSize: '0.75rem', fontWeight: 600 }}>{agent.category}</span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', backgroundColor: 'rgba(99,102,241,0.12)', color: '#818cf8', borderRadius: '6px', padding: '2px 8px', fontSize: '0.75rem', fontWeight: 700 }}>
               <Bot size={11} /> Agent
@@ -83,7 +88,8 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
                 <pre style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.75rem', lineHeight: 1.65, backgroundColor: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: '10px', padding: '1.25rem 1rem', overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word', color: 'var(--text-primary)', margin: 0, maxHeight: '520px', overflowY: 'auto' }}>
                   {agent.instructions}
                 </pre>
-                <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}>
+                <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem', display: 'flex', gap: '0.5rem' }}>
+                  <ShareButton />
                   <CopyButton text={agent.instructions} label="Instructions" />
                 </div>
               </div>
@@ -115,7 +121,7 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
           {agent.deploymentNotes && (
             <Section title="Deployment Notes">
               <div style={{ backgroundColor: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: '10px', padding: '1rem 1.1rem' }}>
-                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
                   <AlertTriangle size={15} color="#f59e0b" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.65, whiteSpace: 'pre-line' }}>{agent.deploymentNotes}</div>
                 </div>
@@ -147,7 +153,6 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
             )}
           </div>
 
-          {/* Related */}
           {related.length > 0 && (
             <div>
               <h3 style={{ fontFamily: 'var(--font-outfit)', fontSize: '0.85rem', fontWeight: 700, marginBottom: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>More in {agent.category}</h3>

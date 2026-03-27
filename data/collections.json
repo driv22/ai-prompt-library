@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "sales-essentials",
+    "title": "Sales Essentials",
+    "description": "High-impact prompts for pipeline management, outreach, and closing",
+    "icon": "TrendingUp",
+    "color": "#ef4444",
+    "promptIds": ["bso-006","bso-007","bso-008","mkt-001","mkt-002","mkt-003","career-001","career-002"]
+  },
+  {
+    "slug": "finance-quarter-end",
+    "title": "Finance Quarter-End Kit",
+    "description": "Everything you need to close the quarter: reporting, analysis, and narrative",
+    "icon": "BarChart3",
+    "color": "#3b82f6",
+    "promptIds": ["bso-009","bso-010","bso-011","inv-001","inv-002","pf-001","pf-002","excel-001"]
+  },
+  {
+    "slug": "executive-toolkit",
+    "title": "Executive Toolkit",
+    "description": "Board decks, strategic planning, and leadership communication",
+    "icon": "Briefcase",
+    "color": "#8b5cf6",
+    "promptIds": ["bso-001","bso-002","bso-003","bso-004","bso-005","pres-001","pres-002","pres-003"]
+  },
+  {
+    "slug": "new-to-copilot",
+    "title": "New to Copilot",
+    "description": "Beginner-friendly prompts to get started fast with Microsoft 365 Copilot",
+    "icon": "Sparkles",
+    "color": "#06b6d4",
+    "promptIds": ["content-001","content-002","career-005","career-006","pres-001","excel-001","mkt-001","bso-001"]
+  },
+  {
+    "slug": "meeting-productivity",
+    "title": "Meeting Productivity Pack",
+    "description": "Before, during, and after your meetings — prompts that save hours",
+    "icon": "Video",
+    "color": "#f59e0b",
+    "promptIds": ["bso-015","bso-016","bso-017","content-010","content-011","pres-005","pres-006","career-010"]
+  },
+  {
+    "slug": "content-creators",
+    "title": "Content Creator's Toolkit",
+    "description": "Social posts, blog articles, emails, and campaigns — all in one pack",
+    "icon": "PenLine",
+    "color": "#ec4899",
+    "promptIds": ["content-001","content-003","content-005","content-007","content-009","mkt-004","mkt-005","mkt-006"]
+  }
+]
