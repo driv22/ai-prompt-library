@@ -73,20 +73,6 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
             {agent.description}
           </p>
 
-          {/* Conversation Starters */}
-          {agent.conversationStarters.length > 0 && (
-            <Section title="Conversation Starters">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {agent.conversationStarters.map((s, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '8px', padding: '0.6rem 0.85rem' }}>
-                    <MessageSquare size={14} style={{ color: 'var(--accent)', marginTop: '2px', flexShrink: 0 }} />
-                    <span style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>{s}</span>
-                  </div>
-                ))}
-              </div>
-            </Section>
-          )}
-
           {/* Instructions */}
           {agent.instructions && (
             <Section title="Agent Instructions">
@@ -98,7 +84,7 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
                   {agent.instructions}
                 </pre>
                 <div style={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}>
-                  <CopyButton text={agent.instructions} />
+                  <CopyButton text={agent.instructions} label="Instructions" />
                 </div>
               </div>
             </Section>
@@ -108,6 +94,20 @@ export default function AgentDetailPage({ params }: { params: { id: string } }) 
           {agent.knowledgeSourcesDetail && (
             <Section title="Knowledge Sources">
               <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.65 }}>{agent.knowledgeSourcesDetail}</p>
+            </Section>
+          )}
+
+          {/* Conversation Starters */}
+          {agent.conversationStarters.length > 0 && (
+            <Section title="Conversation Starters">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {agent.conversationStarters.map((s, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: '8px', padding: '0.6rem 0.85rem' }}>
+                    <MessageSquare size={14} style={{ color: 'var(--accent)', marginTop: '2px', flexShrink: 0 }} />
+                    <span style={{ fontFamily: 'var(--font-jetbrains)', fontSize: '0.8rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>{s}</span>
+                  </div>
+                ))}
+              </div>
             </Section>
           )}
 
