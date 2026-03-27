@@ -3,8 +3,8 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   images: { unoptimized: true },
-  basePath: '/ai-prompt-library',
-  assetPrefix: '/ai-prompt-library',
+  basePath: '',
+  assetPrefix: '',
   webpack: (config) => {
     // Prevent webpack from bundling Node.js-only ONNX runtime during browser build
     config.resolve.alias = {

@@ -6,7 +6,7 @@ export function Footer() {
       <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
           <BookOpen size={18} color="var(--accent)" />
-          <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, color: 'var(--text-primary)' }}>PromptVault</span>
+          <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, color: 'var(--text-primary)' }}>Prompt Vault</span>
         </div>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '1rem' }}>Enterprise-grade AI prompts for Microsoft 365 Copilot.</p>
         <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center' }}>
