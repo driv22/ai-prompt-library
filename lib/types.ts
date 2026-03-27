@@ -1,3 +1,22 @@
+export interface Agent {
+  id: string
+  title: string
+  category: string
+  categorySlug: string
+  description: string
+  audience: string
+  language: string
+  version: string
+  lastUpdated: string
+  raiReviewed: boolean
+  tested: boolean
+  knowledgeSources: string
+  conversationStarters: string[]
+  instructions: string
+  knowledgeSourcesDetail: string
+  deploymentNotes: string
+}
+
 export interface DemoDataFile {
   filename: string
   label: string
