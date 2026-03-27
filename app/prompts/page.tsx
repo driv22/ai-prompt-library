@@ -29,7 +29,7 @@ function LibraryContent() {
   const [smartQuery, setSmartQuery] = useState('')
 
   const { query, setQuery, category, setCategory, tool, setTool, hasDemoData, setHasDemoData, filtered, clearAll } = useFilters(prompts)
-  const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts)
+  const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts, '/ai-prompt-library/embeddings.json')
 
   useEffect(() => {
     setMounted(true)

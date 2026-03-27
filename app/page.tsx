@@ -8,8 +8,9 @@ import { categories, categoryColorMap } from '@/lib/constants'
 import { PromptCard } from '@/components/PromptCard'
 import { SkeletonCard } from '@/components/SkeletonCard'
 import { useSemanticSearch } from '@/hooks/useSemanticSearch'
-import { Prompt } from '@/lib/types'
+import { Prompt, Agent } from '@/lib/types'
 import promptsData from '@/data/prompts.json'
+import agentsData from '@/data/agents.json'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -19,8 +20,10 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 }
 
 const prompts = promptsData as Prompt[]
+const agents = agentsData as Agent[]
 const featured = prompts.filter(p => p.featured).slice(0, 6)
 const promptCount = prompts.length
+const agentCount = agents.length
 const categoryCount = categories.length
 const demoCount = prompts.filter(p => p.hasDemoData).length
 
@@ -35,7 +38,7 @@ export default function HomePage() {
   const [smartQ, setSmartQ] = useState('')
   const router = useRouter()
 
-  const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts)
+  const { search: semanticSearch, results: smartResults, status: smartStatus, clear: clearSmart } = useSemanticSearch(prompts, '/ai-prompt-library/embeddings.json')
 
   const isSmartSearching = smartStatus === 'loading-model' || smartStatus === 'searching'
 
@@ -145,7 +148,7 @@ export default function HomePage() {
       {/* Stats */}
       <section style={{ borderBottom: '1px solid var(--border)', borderTop: '1px solid var(--border)', backgroundColor: 'var(--bg-surface)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '1.5rem', display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-          {[[promptCount.toLocaleString(), 'Prompts'], [String(categoryCount), 'Categories'], [String(demoCount), 'Demo Datasets']].map(([num, label]) => (
+          {[[promptCount.toLocaleString(), 'Prompts'], [agentCount.toLocaleString(), 'Agents'], [String(categoryCount), 'Categories'], [String(demoCount), 'Demo Datasets']].map(([num, label]) => (
             <div key={label} style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'var(--font-outfit)', fontSize: '2rem', fontWeight: 800, color: 'var(--accent)', lineHeight: 1 }}>{num}</div>
               <div style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.25rem' }}>{label}</div>
