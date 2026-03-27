@@ -9,7 +9,7 @@ export function Nav() {
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
         <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
           <BookOpen size={20} color="var(--accent)" />
-          <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)' }}>AI Prompt Library</span>
+          <span style={{ fontFamily: 'var(--font-outfit)', fontWeight: 700, fontSize: '1.05rem', color: 'var(--text-primary)' }}>PromptVault</span>
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
           <Link href="/prompts" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>Browse</Link>
