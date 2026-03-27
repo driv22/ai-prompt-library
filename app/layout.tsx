@@ -5,8 +5,6 @@ import './globals.css'
 import { Nav } from '@/components/Nav'
 import { Footer } from '@/components/Footer'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import { ScriptBuilderProvider } from '@/components/ScriptBuilderContext'
-import { ScriptBuilderTray } from '@/components/ScriptBuilderTray'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit', display: 'swap' })
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans', display: 'swap' })
@@ -22,12 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
         <ThemeProvider>
-          <ScriptBuilderProvider>
-            <Nav />
-            <main>{children}</main>
-            <Footer />
-            <ScriptBuilderTray />
-          </ScriptBuilderProvider>
+          <Nav />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
         {/* Plausible Analytics — replace data-domain with your domain after signing up at plausible.io */}
         <Script
