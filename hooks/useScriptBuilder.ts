@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 import { Prompt } from '@/lib/types'
 
 // Update this to your deployed Cloudflare Worker URL after setup
-export const WORKER_URL = 'https://prompt-vault-script.REPLACE_WITH_YOUR_SUBDOMAIN.workers.dev'
+export const WORKER_URL = 'https://prompt-vault-script.dlrivero2.workers.dev'
 
 type GenerateStatus = 'idle' | 'generating' | 'done' | 'error'
 
